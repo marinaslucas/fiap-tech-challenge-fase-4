@@ -1,0 +1,27 @@
+# =====================================================================
+# Compose para desenvolvimento local. Producao em HF Spaces usa o
+# Dockerfile diretamente (sem este compose).
+# =====================================================================
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: medica-ia-multimodal:dev
+    container_name: medica-ia-multimodal
+    ports:
+      - "7860:7860"
+    env_file:
+      - .env
+    volumes:
+      # Hot-reload do codigo durante desenvolvimento.
+      - ./src:/app/src
+      - ./ui:/app/ui
+      - ./scripts:/app/scripts
+      - ./app.py:/app/app.py
+      # Persistencia de dados gerados em runtime.
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./reports:/app/reports
+    restart: unless-stopped

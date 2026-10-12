@@ -1,0 +1,60 @@
+# Videos demo da aba Multimodal.
+# Cada caso aponta para 1 URL do YouTube + segmento (start, duration).
+# - `extract_audio: true` extrai voz do paciente do proprio video (mais coerente).
+# - `extract_audio: false` mantem apenas o video; audio fica por gen_tts_scripts.py.
+#
+# Rodar: python scripts/fetch_youtube_demo_videos.py
+# Ajustar start/duration conforme o trecho mais relevante de cada video.
+
+cases:
+  consulta_clinica_geral:
+    category: consultas
+    note: "Consulta clinica simulada (academica) de avaliacao clinica geral. Paciente refere dor toracica e alteracao de pressao arterial. Paciente e medica em sala, mascaradas, sentadas frente a frente."
+    url: "https://www.youtube.com/watch?v=SitHXQF14BY"
+    start: "00:00:30"
+    duration: 30
+    extract_audio: true
+
+  rastreio_mama:
+    category: consultas
+    note: "Depoimento real de paciente Maria Jose sobre rastreio de cancer de mama. Video original tem 37s: 0-4s musica abertura, 5-24s fala real, 24-37s musica encerramento. Caso usado como audio-only: video apresenta agulhas/instrumentos de exame que geram falso positivo no YOLO; o signal relevante esta no audio (tom emocional + transcricao). Apos extracao do audio.wav, o video.mp4 e deletado."
+    url: "https://www.youtube.com/watch?v=cFzfR1aI3d8"
+    start: "00:00:05"
+    duration: 19
+    extract_audio: true
+    discard_video_after_extract: true
+
+  dermatologica:
+    category: consultas
+    note: "Consulta clinica simulada (academica) Giovanna Schmidt. Paciente com queixa de manchas faciais, componente emocional acentuado."
+    url: "https://www.youtube.com/watch?v=mKfPJokF7xs"
+    start: "00:00:30"
+    duration: 35
+    extract_audio: true
+
+  prenatal_acolhimento:
+    category: consultas
+    note: "Primeira consulta gestacional (simulacao academica). Trecho de acolhimento emocional: paciente recebe resultado positivo, expressa ansiedade e duvidas sobre como contar ao parceiro, contexto socioemocional. Exercita pilares de emocao (vocal e facial) e linguagem corporal."
+    url: "https://www.youtube.com/watch?v=rzKnvhod8tU"
+    start: "00:02:35"
+    duration: 60
+    extract_audio: true
+
+  rotina:
+    category: cirurgias
+    note: "Procedimento laparoscopico em andamento sem evento critico. Visualizacao da cavidade e instrumentos."
+    url: "https://www.youtube.com/shorts/4LQ-hVJ4qas"
+    start: "00:00:00"
+    duration: 25
+    extract_audio: false
+
+  # sangramento e gerado por scripts/build_cirurgia_demo_video.py
+  # (frames CSeg8k com classe Blood detectada pelo YOLO v1). Nao tem URL
+  # YouTube, mas e listado aqui pra documentacao do caso.
+  sangramento:
+    category: cirurgias
+    note: "Procedimento laparoscopico com sangramento intraoperatorio. Gerado local por build_cirurgia_demo_video.py filtrando frames com classe Blood do CholecSeg8k."
+    url: ""  # local-only, gerado por build_cirurgia_demo_video.py
+    start: "00:00:00"
+    duration: 0
+    extract_audio: false

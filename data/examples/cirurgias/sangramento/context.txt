@@ -1,0 +1,5 @@
+Procedimento cirurgico laparoscopico com sangramento intraoperatorio evidente no foco operatorio.
+Detectada presenca de sangue em quantidade significativa indicando provavel lesao vascular ou desfazimento de hemostasia.
+Necessario monitoramento hemodinamico continuo da paciente.
+Intervencao hemostatica imediata (eletrocauterio, sutura, clipagem) ou eventual conversao para laparotomia se sangramento nao controlavel por via laparoscopica.
+Risco critico de instabilidade hemodinamica.

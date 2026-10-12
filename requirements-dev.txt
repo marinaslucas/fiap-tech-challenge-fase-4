@@ -1,0 +1,9 @@
+# Dependencias de desenvolvimento derivadas de pyproject.toml.
+# Mantenha sincronizado com a secao [project.optional-dependencies].dev.
+# Inclui o runtime para facilitar setup local: `pip install -r requirements-dev.txt`.
+
+-r requirements.txt
+
+ruff>=0.6.0
+pytest>=8.0
+pytest-mock>=3.14

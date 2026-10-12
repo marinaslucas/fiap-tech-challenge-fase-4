@@ -1,0 +1,38 @@
+# Dependencias runtime derivadas de pyproject.toml.
+# Mantenha sincronizado com a secao [project].dependencies.
+# Cada sprint adiciona suas deps aqui e no pyproject.toml.
+
+# Sprint 0 (configuracao)
+pydantic>=2.7,<3.0
+pydantic-settings>=2.3,<3.0
+python-dotenv>=1.0,<2.0
+
+# Sprint 1 (pipeline de video)
+ultralytics>=8.3,<9.0
+opencv-python>=4.10,<5.0
+numpy>=1.26
+mediapipe>=0.10,<1.0
+# FER exige Pillow legado, instala em Python <=3.12 (Dockerfile usa python:3.12-slim).
+fer>=22.5
+
+# Sprint 2 (pipeline de audio)
+faster-whisper>=1.0,<2.0
+librosa>=0.10,<1.0
+soundfile>=0.12,<1.0
+transformers>=4.40,<7.0
+azure-ai-textanalytics>=5.3,<6.0
+azure-cognitiveservices-speech>=1.40,<2.0
+
+# Sprint 3 (RAG)
+chromadb>=1.0,<2.0
+sentence-transformers>=3.0,<6.0
+pypdf>=5.0,<7.0
+reportlab>=4.0,<5.0
+
+# Sprint 4 (anomalia + LLM)
+scikit-learn>=1.4,<2.0
+openai>=1.40,<2.0
+
+# Sprint 5 (UI Gradio Blocks)
+gradio>=4.40,<6.0
+matplotlib>=3.8,<4.0

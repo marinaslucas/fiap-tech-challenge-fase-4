@@ -1,0 +1,124 @@
+# =====================================================================
+# Python
+# =====================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+.eggs/
+build/
+dist/
+pip-wheel-metadata/
+
+# =====================================================================
+# Ambientes virtuais
+# =====================================================================
+.venv/
+venv/
+env/
+.python-version
+
+# =====================================================================
+# Caches de ferramentas
+# =====================================================================
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# =====================================================================
+# Variaveis de ambiente e segredos
+# =====================================================================
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# =====================================================================
+# Modelos e datasets pesados
+# =====================================================================
+models/*
+!models/.gitkeep
+# Pesos custom treinados via notebooks/train_yolo_colab.ipynb (~6 MB, vale commitar).
+!models/yolov8n_surgical.pt
+
+# Pesos pre-treinados YOLO baixados automaticamente pela Ultralytics
+# na primeira inicializacao (~6 MB cada). Nao commitar.
+yolov8n-pose.pt
+yolov8n.pt
+
+data/raw/*
+!data/raw/.gitkeep
+# PDFs publicos de diretrizes clinicas (MS/INCA/FEBRASGO, ~48 MB total).
+# Versionados pra simplificar deploy: usuario nao precisa rodar warmup.py
+# pra baixar, e a base indexada na avaliacao fica reproduzivel.
+!data/raw/*.pdf
+data/processed/*
+!data/processed/.gitkeep
+# Indice Chroma commitado via LFS pra evitar timeout de build no HF Spaces
+# (gerar embeddings em CPU leva ~30min, alem do timeout do hardware free).
+!data/processed/chroma/
+!data/processed/chroma/**
+
+# Mantem amostras pequenas e exemplos rastreados.
+# data/synthetic e data/examples ficam versionados (com seus proprios .gitkeep).
+
+# Artefatos gerados automaticamente por scripts (regeneraveis).
+data/synthetic/demo_video.mp4
+data/synthetic/audio_*.wav
+
+# (Indice Chroma e versionado via LFS — ver bloco data/processed acima.)
+
+# =====================================================================
+# Banco de auditoria SQLite (gerado em runtime)
+# =====================================================================
+*.db
+*.sqlite
+*.sqlite3
+# Excecao: indice Chroma (vector store) e versionado via LFS pra evitar
+# rebuild do RAG no deploy. SQLite de auditoria continua ignorado.
+!data/processed/chroma/chroma.sqlite3
+
+# =====================================================================
+# Logs e relatorios temporarios
+# =====================================================================
+*.log
+logs/
+reports/runs/
+
+# =====================================================================
+# IDE / editores
+# =====================================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# =====================================================================
+# macOS / SO
+# =====================================================================
+.DS_Store
+Thumbs.db
+
+# =====================================================================
+# Hugging Face / Gradio cache
+# =====================================================================
+gradio_cached_examples/
+flagged/
+.cache/
+
+# =====================================================================
+# Notebooks (se aparecerem ao longo do projeto)
+# =====================================================================
+.ipynb_checkpoints/
+
+# Claude Code internal state
+.claude/

@@ -1,0 +1,134 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medica-ia-multimodal"
+version = "0.1.0"
+description = "Sistema de monitoramento multimodal aplicado a saude da mulher (Tech Challenge Fase 4)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.12"
+authors = [
+    { name = "Joalisson Borges", email = "joalissonborges94@gmail.com" },
+]
+keywords = ["multimodal", "healthcare", "azure", "gradio", "rag"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+# Dependencias runtime. Cada sprint adiciona as suas conforme o pipeline cresce.
+dependencies = [
+    # Sprint 0 (configuracao)
+    "pydantic>=2.7,<3.0",
+    "pydantic-settings>=2.3,<3.0",
+    "python-dotenv>=1.0,<2.0",
+    # Sprint 1 (pipeline de video)
+    "ultralytics>=8.3,<9.0",
+    "opencv-python>=4.10,<5.0",
+    "numpy>=1.26",
+    "mediapipe>=0.10,<1.0",
+    # FER exige Pillow legado e nao builda em Python 3.14.
+    # No container python:3.12-slim funciona; em dev local 3.14 ha fallback gracioso.
+    "fer>=22.5",
+    # Sprint 2 (pipeline de audio)
+    "faster-whisper>=1.0,<2.0",
+    "librosa>=0.10,<1.0",
+    "soundfile>=0.12,<1.0",
+    "transformers>=4.40,<7.0",
+    "azure-ai-textanalytics>=5.3,<6.0",
+    "azure-cognitiveservices-speech>=1.40,<2.0",
+    # Sprint 3 (RAG)
+    "chromadb>=1.0,<2.0",
+    "sentence-transformers>=3.0,<6.0",
+    "pypdf>=5.0,<7.0",
+    "reportlab>=4.0,<5.0",
+    # Sprint 4 (anomalia + LLM)
+    "scikit-learn>=1.4,<2.0",
+    "openai>=1.40,<2.0",
+    # Sprint 5 (UI Gradio Blocks)
+    "gradio>=4.40,<6.0",
+    "matplotlib>=3.8,<4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.6.0",
+    "pytest>=8.0",
+    "pytest-mock>=3.14",
+]
+
+[project.urls]
+Homepage = "https://github.com/joalissonborges/medica-ia-multimodal"
+Documentation = "https://github.com/joalissonborges/medica-ia-multimodal/tree/main/docs"
+
+# ---------------------------------------------------------------------------
+# Setuptools: descoberta de pacotes
+# ---------------------------------------------------------------------------
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+exclude = ["tests*", "scripts*", "ui*", "data*", "models*", "reports*", "docs*"]
+
+# ---------------------------------------------------------------------------
+# Ruff: linter + formatter unificado
+# Documentado em docs/padroes_codigo.md
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests", "ui", "scripts"]
+extend-exclude = [
+    "data",
+    "models",
+    "reports",
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+# Conjunto definido em docs/padroes_codigo.md (E, W, F, I, N, B, UP, SIM).
+select = ["E", "W", "F", "I", "N", "B", "UP", "SIM"]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+# Testes podem ter nomes mais flexiveis e fixtures sem docstring.
+"tests/**/*.py" = ["N802", "N803", "N806"]
+# Modulos __init__ podem reexportar sem usar localmente.
+"**/__init__.py" = ["F401"]
+# Arquivos da UI Gradio precisam de `with` aninhados explicitos:
+# a sintaxe multi-with (`with A(), B():`) faz o Gradio fechar o
+# bloco interno antes da hora em algumas versoes, deixando
+# componentes vazando para fora do container pai.
+"ui/**/*.py" = ["SIM117"]
+"app.py" = ["SIM117"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["src", "ui"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = [
+    "-ra",
+    "--strict-markers",
+    "--strict-config",
+]
+markers = [
+    "smoke: testes smoke rapidos por modulo",
+    "integration: testes de integracao entre modulos",
+]

@@ -1,0 +1,70 @@
+{
+  "casos": [
+    {
+      "nome": "Consulta clinica geral - queixa toracica",
+      "descricao": "Primeira consulta clinica de avaliacao geral, paciente refere dor toracica e alteracao de pressao arterial.",
+      "video_path": "data/examples/consultas/consulta_clinica_geral/video.mp4",
+      "audio_path": "data/examples/consultas/consulta_clinica_geral/audio.wav",
+      "context_text": "Primeira consulta clinica de avaliacao geral em ambulatorio.\nPaciente adulta refere dor toracica iniciada ha algumas horas, com sensacao de mal estar associado.\nRelata alteracao recente de pressao arterial em aferimento domiciliar.\nAnamnese inicial em curso, sinais vitais sendo coletados no momento do atendimento.\nConversa fluente, paciente comunicativa, postura geral tranquila apesar do desconforto referido.\nConduta esperada: investigacao etiologica com eletrocardiograma e exames laboratoriais, estratificacao de risco cardiovascular e definicao de seguimento conforme achados.",
+      "patient_metadata": {
+        "id": "exemplo-consulta-clinica-geral"
+      },
+      "nivel_esperado": "normal"
+    },
+    {
+      "nome": "Rastreio de cancer de mama (depoimento)",
+      "descricao": "Depoimento real de paciente sobre experiencia com rastreio e diagnostico mamario. Audio-only: video apresenta agulhas/instrumentos de exame que geram falso positivo no YOLO.",
+      "video_path": null,
+      "audio_path": "data/examples/consultas/rastreio_mama/audio.wav",
+      "context_text": "Paciente do sexo feminino em depoimento espontaneo sobre sua experiencia com rastreio e diagnostico de alteracao mamaria.\nRelata trajetoria do exame de imagem, impacto emocional do resultado e importancia do acompanhamento medico continuado.\nVoz com tom emocional perceptivel, postura levemente retraida.\nCaso ilustrativo da importancia do rastreio precoce de cancer de mama.\nReferencia clinica: INCA, Deteccao Precoce do Cancer de Mama.",
+      "patient_metadata": {
+        "id": "exemplo-rastreio-mama"
+      },
+      "nivel_esperado": "moderate"
+    },
+    {
+      "nome": "Consulta dermatologica com ansiedade",
+      "descricao": "Consulta dermatologica com queixa de manchas faciais e componente emocional acentuado.",
+      "video_path": "data/examples/consultas/dermatologica/video.mp4",
+      "audio_path": "data/examples/consultas/dermatologica/audio.wav",
+      "context_text": "Paciente do sexo feminino em consulta dermatologica de saude da mulher.\nQueixa principal de manchas hiperpigmentadas localizadas na regiao facial.\nRefere uso atual de cremes e pomadas topicas, com aderencia parcial ao tratamento.\nInvestigacao em andamento com exames complementares ja prescritos pela equipe.\nApresenta componente emocional acentuado durante a consulta, com sinais vocais sugestivos de apreensao e tensao ao discutir a evolucao das lesoes.\nNecessario acolhimento, esclarecimento sobre os exames previstos, reforco de adesao ao tratamento topico e consideracao de suporte psicologico se ansiedade persistente.",
+      "patient_metadata": {
+        "id": "exemplo-dermatologica"
+      },
+      "nivel_esperado": "moderate"
+    },
+    {
+      "nome": "Pre-natal - acolhimento emocional",
+      "descricao": "Primeira consulta gestacional, trecho de acolhimento ao resultado positivo. Paciente expressa ansiedade e duvidas sobre como contar ao parceiro.",
+      "video_path": "data/examples/consultas/prenatal_acolhimento/video.mp4",
+      "audio_path": "data/examples/consultas/prenatal_acolhimento/audio.wav",
+      "context_text": "Primeira consulta gestacional em unidade basica de saude, conduzida pela equipe de enfermagem (simulacao academica).\nPaciente jovem comparece apos teste de farmacia positivo, com confirmacao em teste no servico.\nTrecho de acolhimento ao resultado: paciente expressa nervosismo, surpresa e duvidas sobre como comunicar a notica ao parceiro e a familia.\nGestacao nao planejada, paciente refere viver com a mae.\nPostura corporal levemente retraida, fala entrecortada, sinais de ansiedade situacional.\nEnfermeiro acolhe a paciente, oferece suporte e introduz o fluxo de acompanhamento pre-natal.\nConduta esperada: escuta qualificada, abertura de prontuario, encaminhamento para equipe multiprofissional (enfermagem, nutricao, psicologia).",
+      "patient_metadata": {
+        "id": "exemplo-prenatal-acolhimento"
+      },
+      "nivel_esperado": "moderate"
+    },
+    {
+      "nome": "Cirurgia laparoscopica de rotina",
+      "descricao": "Procedimento laparoscopico em andamento sem intercorrencia visivel.",
+      "video_path": "data/examples/cirurgias/rotina/video.mp4",
+      "audio_path": null,
+      "context_text": "Procedimento cirurgico laparoscopico em andamento sem intercorrencias visiveis.\nVisualizacao da cavidade abdominal com instrumentos cirurgicos (grasper, eletrocauterio) em etapa rotineira do procedimento.\nTecido sem sinais de sangramento ativo ou complicacao hemodinamica.\nConduta de continuidade do procedimento conforme planejamento cirurgico.",
+      "patient_metadata": {
+        "id": "exemplo-cirurgia-rotina"
+      },
+      "nivel_esperado": "normal"
+    },
+    {
+      "nome": "Sangramento intraoperatorio",
+      "descricao": "Procedimento laparoscopico com sangramento intraoperatorio em foco operatorio.",
+      "video_path": "data/examples/cirurgias/sangramento/video.mp4",
+      "audio_path": null,
+      "context_text": "Procedimento cirurgico laparoscopico com sangramento intraoperatorio evidente no foco operatorio.\nDetectada presenca de sangue em quantidade significativa indicando provavel lesao vascular ou desfazimento de hemostasia.\nNecessario monitoramento hemodinamico continuo da paciente.\nIntervencao hemostatica imediata (eletrocauterio, sutura, clipagem) ou eventual conversao para laparotomia se sangramento nao controlavel por via laparoscopica.\nRisco critico de instabilidade hemodinamica.",
+      "patient_metadata": {
+        "id": "exemplo-sangramento"
+      },
+      "nivel_esperado": "critical"
+    }
+  ]
+}
